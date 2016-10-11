@@ -1,0 +1,18 @@
+#function to append each base to objects in list
+# list presumably contains kmers of desired length - 1 recursively
+def append_base(x):
+    result = []
+    for y in x:
+        for base in ["A", "T", "C", "G"]:
+            result.append(y + base)
+    return result
+
+# function populates list of all possible kmers
+def append_multi(kmer_length):
+    x = [''] # defines starting list fed into append_base as blank string
+    for i in range(kmer_length):
+        x = append_base(x)
+    return x
+
+# mers4 = append_multi(4) # because this list is relatively short
+mers4 = (x for x in append_multi(4)) # incase this list were longer
